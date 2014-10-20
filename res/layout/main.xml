@@ -1,0 +1,9 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/main_l"
+    android:gravity="center"
+    tools:context="ua.cn.defence1lab.tictactoe.MainActivity">
+
+</TableLayout>
