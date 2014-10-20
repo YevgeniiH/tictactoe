@@ -7,6 +7,9 @@ public class Game implements ICheckWinner {
     private Player activePlayer;
     private int filled;
     private int MassCount;
+    public int cntGames;
+    public int cntXwin;
+    public int cntOwin;
     private ICheckWinner[] winnerCheckers;
 
     public Game() {
@@ -27,6 +30,9 @@ public class Game implements ICheckWinner {
         started = false;
         activePlayer = null;
         filled = 0;
+        cntGames = 0;
+        cntXwin = 0;
+        cntOwin = 0;
     }
 
     public void start() {
