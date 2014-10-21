@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="top"
-    tools:context="ua.cn.defence1lab.tictactoe.MainActivity" >
+    tools:context="ua.cn.defence1lab.tictactoe.GameActivity" >
 
     <TextView
         android:id="@+id/textView1"
