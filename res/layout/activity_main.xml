@@ -13,7 +13,10 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Крестики-Нолики"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TableRow
@@ -28,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:onClick="continueB"
         android:text="Продолжить" />
 
     <Button
@@ -40,19 +45,12 @@
         android:text="Новая игра" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="Опции" />
-
-    <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:onClick="rulesB"
         android:text="Правила" />
 
     <Button
@@ -61,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:onClick="aboutB"
         android:text="Про игру" />
 
 </TableLayout>
