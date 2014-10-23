@@ -1,5 +1,7 @@
 package ua.cn.defence1lab.tictactoe;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ public class GameActivity extends Activity {
     private Button[][] buttons = new Button[3][3];
     private TextView textViewCntGames = null;
     private TableLayout layout;
+	private Random r;
 
     public GameActivity() {
         game = new Game();
@@ -26,6 +29,7 @@ public class GameActivity extends Activity {
         layout = (TableLayout) findViewById(R.id.main_l);
         buildGameField();
         textViewCntGames = (TextView) findViewById(R.id.textView1);
+        resetFldButtons();
     }
     
     public void onClickButton(View view) {
@@ -63,7 +67,11 @@ public class GameActivity extends Activity {
 			break;
 		}
         if (game.makeTurn(x, y)) {
-            button.setText(player.getName());
+        	if (player.getName() == "X") {
+        		button.setBackgroundResource(R.drawable.x);
+			}else {
+				button.setBackgroundResource(R.drawable.o);
+			}
         }
         Player winner = g.checkWinner();
         if (winner != null) {
@@ -72,8 +80,69 @@ public class GameActivity extends Activity {
         if (g.isFieldFilled()) {  
             gameOver();
         }
+        //AI turn
+        if (game.gameMode == 1 && game.filled != 0) {
+        	r = new Random();
+        	x=r.nextInt(3);
+        	y=r.nextInt(3);
+        	while (!game.makeTurn(x, y)) {
+        		x=r.nextInt(3);
+            	y=r.nextInt(3);
+			}
+        	Button b=null;
+        	if (x==0 && y==0) {
+				b = (Button) findViewById(R.id.button1);
+			}else	if (x==0 && y==1) {
+				b = (Button) findViewById(R.id.button2);
+			}else	if (x==0 && y==2) {
+				b = (Button) findViewById(R.id.button3);
+			}else	if (x==1 && y==0) {
+				b = (Button) findViewById(R.id.button4);
+			}else	if (x==1 && y==1) {
+				b = (Button) findViewById(R.id.button5);
+			}else	if (x==1 && y==2) {
+				b = (Button) findViewById(R.id.button6);
+			}else	if (x==2 && y==0) {
+				b = (Button) findViewById(R.id.button7);
+			}else	if (x==2 && y==1) {
+				b = (Button) findViewById(R.id.button8);
+			}else	if (x==2 && y==2) {
+				b = (Button) findViewById(R.id.button9);
+			}
+        	if (player.getName() == "X") {
+        		b.setBackgroundResource(R.drawable.o);
+			}else {
+				b.setBackgroundResource(R.drawable.x);
+			}
+            winner = g.checkWinner();
+            if (winner != null) {
+                gameOver(winner);
+            }
+            if (g.isFieldFilled()) {  
+                gameOver();
+            }
+		}//End AI turn
     }
 
+    public void onClickChangeGameMode(View v){
+    	Button b = (Button) v;
+    	if (game.gameMode == 0) {
+    		game.gameMode = 1;
+    		b.setText("AI On");
+    		game.reset();
+    		resetFldButtons();
+		}else {
+			game.gameMode = 0;
+			b.setText("AI Off");
+			game.reset();
+			resetFldButtons();
+		}
+    }
+    
+    public void changeGameMode(View v){
+    	
+    }
+    
     private void buildGameField() {
         Mass[][] field = game.getField();
         buttons[0][0] = (Button) findViewById(R.id.button1);
@@ -154,5 +223,27 @@ public class GameActivity extends Activity {
                 }
             }
         }
+        resetFldButtons();
+    }
+    
+    private void resetFldButtons(){
+    	Button button= (Button) findViewById(R.id.button1);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button2);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button3);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button4);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button5);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button6);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button7);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button8);
+    	button.setBackgroundResource(R.drawable.n);
+    	button= (Button) findViewById(R.id.button9);
+    	button.setBackgroundResource(R.drawable.n);
     }
 }

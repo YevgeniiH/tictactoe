@@ -3,7 +3,7 @@
     android:id="@+id/main_l"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="top"
+    android:gravity="top|center_horizontal"
     tools:context="ua.cn.defence1lab.tictactoe.GameActivity" >
 
     <TextView
@@ -24,7 +24,8 @@
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/button1"
@@ -55,7 +56,8 @@
     <TableRow
         android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/button4"
@@ -86,7 +88,8 @@
     <TableRow
         android:id="@+id/tableRow4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/button7"
@@ -118,6 +121,22 @@
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChangeGameMode"
+            android:text="AI Off" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="visible"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </TableRow>
 
 </TableLayout>

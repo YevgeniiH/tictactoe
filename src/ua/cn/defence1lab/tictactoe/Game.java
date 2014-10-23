@@ -1,15 +1,18 @@
 package ua.cn.defence1lab.tictactoe;
 
+import android.widget.Button;
+
 public class Game implements ICheckWinner {
     private Player[] players;
     private Mass[][] field;
     private boolean started;
-    private Player activePlayer;
-    private int filled;
+    public Player activePlayer;
+    public int filled;
     private int MassCount;
     public int cntGames;
     public int cntXwin;
     public int cntOwin;
+    public int gameMode;//0-two players; 1-one player
     private ICheckWinner[] winnerCheckers;
 
     public Game() {
@@ -33,6 +36,7 @@ public class Game implements ICheckWinner {
         cntGames = 0;
         cntXwin = 0;
         cntOwin = 0;
+        gameMode = 0;
     }
 
     public void start() {
@@ -103,4 +107,5 @@ public class Game implements ICheckWinner {
         }
         filled = 0;
     }
+    
 }
