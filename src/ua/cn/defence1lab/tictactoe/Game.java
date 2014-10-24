@@ -4,7 +4,9 @@ import android.widget.Button;
 
 public class Game implements ICheckWinner {
     private Player[] players;
-    private Mass[][] field;
+    public Mass[][] field;
+    public Mass[][] fldp;
+    public Mass[][] fldc;
     private boolean started;
     public Player activePlayer;
     public int filled;
@@ -17,10 +19,14 @@ public class Game implements ICheckWinner {
 
     public Game() {
         field = new Mass[3][3];
+        fldp = new Mass[3][3];
+        fldc = new Mass[3][3];
         MassCount = 0;
         for (int i = 0, l = field.length; i < l; i++) {
             for (int j = 0, l2 = field[i].length; j < l2; j++) {
                 field[i][j] = new Mass();
+                fldp[i][j] = new Mass();
+                fldc[i][j] = new Mass();
                 MassCount++;
             }
         }
@@ -106,6 +112,23 @@ public class Game implements ICheckWinner {
             }
         }
         filled = 0;
+        resetFld();
     }
+    
+    public void resetFld() {
+        for (int i = 0, l = fldp.length; i < l; i++) {
+            for (int j = 0, l2 = fldp[i].length; j < l2; j++) {
+            	fldp[i][j].fill(null);
+            	fldc[i][j].fill(null);
+            }
+        }
+    }
+
+	@Override
+	public void checkDanger(Mass[][] fdlp, Mass[][] fdlc) {
+		for (ICheckWinner danChecker : winnerCheckers) {
+            danChecker.checkDanger(fdlp, fdlc);
+        }
+	}
     
 }

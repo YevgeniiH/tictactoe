@@ -31,26 +31,25 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dip" />
+            android:minWidth="100dip"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
-
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
     </TableRow>
 
     <TableRow
@@ -63,26 +62,25 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dip"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
-
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
     </TableRow>
 
     <TableRow
@@ -95,48 +93,53 @@
             android:id="@+id/button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
 
         <Button
             android:id="@+id/button9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickButton"
             android:minHeight="100dp"
-            android:minWidth="100dp" />
-
+            android:minWidth="100dp"
+            android:onClick="onClickButton" />
     </TableRow>
 
     <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickChangeGameMode"
-            android:text="AI Off" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:visibility="visible"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </TableRow>
+
+<RadioGroup
+    android:id="@+id/radioGroup1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RadioButton
+        android:id="@+id/radio0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="selectTPM"
+        android:text="Режим: Игрок1 vs Игрок2" />
+
+    <RadioButton
+        android:id="@+id/radio1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectVSAM"
+        android:text="Режим: Игрок1 vs Android" />
+
+</RadioGroup>
 
 </TableLayout>

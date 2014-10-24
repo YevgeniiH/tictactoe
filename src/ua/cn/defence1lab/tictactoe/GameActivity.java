@@ -4,6 +4,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 
@@ -81,10 +82,56 @@ public class GameActivity extends Activity {
             gameOver();
         }
         //AI turn
-        if (game.gameMode == 1 && game.filled != 0) {
+        if (game.gameMode == 1 && game.filled != 0 && game.getCurrentActivePlayer().getName() != "X") {
         	r = new Random();
-        	x=r.nextInt(3);
-        	y=r.nextInt(3);
+        	int x1 = -1, y1 = -1;
+        	x=-1;
+        	y=-1;
+        	game.resetFld();
+        	game.checkDanger(game.fldp, game.fldc);
+        	for (int i = 0, len = game.fldc.length; i < len; i++) {
+                for (int j = 0, len2 = game.fldc[i].length; j < len2; j++) {
+                    Player curPl = game.fldc[i][j].getPlayer();
+                    if (curPl != null) {
+                    	if (curPl.getName() == "O") {
+    						x = i;
+    						y = j;
+    						//Toast.makeText(this, "OOOO  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
+    					}
+					}
+                }
+            }
+        	//Toast.makeText(this, "1  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
+        	//if (x1 == -1 && y1 == -1) {
+        		for (int i = 0, len = game.fldp.length; i < len; i++) {
+                    for (int j = 0, len2 = game.fldp[i].length; j < len2; j++) {
+                        Player curPl = game.fldp[i][j].getPlayer();
+                        if (curPl != null) {
+                        	if (curPl.getName() == "X") {
+        						x1 = i;
+        						y1 = j;
+        						//Toast.makeText(this, "XXXX  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
+        					}
+    					}
+                    }
+                }
+			//}
+        	//Toast.makeText(this, "2  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
+        	if ((x == -1 && y == -1) && (x1 == -1 && y1 == -1)) {
+        		//x=r.nextInt(3);
+            	//y=r.nextInt(3);
+            	if (!game.field[1][1].isFilled()) {
+            		x=1;
+            		y=1;
+                }else {
+                	x=r.nextInt(3);
+                	y=r.nextInt(3);
+				}
+			}else if (x == -1 && y == -1) {
+				x=x1;
+				y=y1;
+			}
+        	//Toast.makeText(this, "3  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
         	while (!game.makeTurn(x, y)) {
         		x=r.nextInt(3);
             	y=r.nextInt(3);
@@ -123,24 +170,29 @@ public class GameActivity extends Activity {
             }
 		}//End AI turn
     }
-
-    public void onClickChangeGameMode(View v){
-    	Button b = (Button) v;
-    	if (game.gameMode == 0) {
-    		game.gameMode = 1;
-    		b.setText("AI On");
+    
+    public void selectTPM(View v){
+    	if (game.gameMode == 1) {
+    		game.gameMode = 0;
     		game.reset();
     		resetFldButtons();
-		}else {
-			game.gameMode = 0;
-			b.setText("AI Off");
-			game.reset();
-			resetFldButtons();
+    		game.cntGames = 0;
+        	game.cntXwin = 0;
+        	game.cntOwin = 0;
+        	textViewCntGames.setText(game.cntGames + "/3");
 		}
     }
     
-    public void changeGameMode(View v){
-    	
+    public void selectVSAM(View v){
+    	if (game.gameMode == 0) {
+    		game.gameMode = 1;
+    		game.reset();
+    		resetFldButtons();
+    		game.cntGames = 0;
+        	game.cntXwin = 0;
+        	game.cntOwin = 0;
+        	textViewCntGames.setText(game.cntGames + "/3");
+		}
     }
     
     private void buildGameField() {
@@ -195,13 +247,20 @@ public class GameActivity extends Activity {
 		}
         if (game.cntGames == 3) {
         	if (game.cntXwin > game.cntOwin) {
-        		Toast.makeText(this, "Игрок 'Х' победил в " + game.cntXwin+ "/3 матчах", 
-        				Toast.LENGTH_SHORT).show();
+        		Toast t = Toast.makeText(this, "Игрок 'Х' победил в " + game.cntXwin+ "/3 матчах", 
+        				Toast.LENGTH_SHORT);
+        				t.setGravity(Gravity.CENTER, 0, 0);
+        				t.show();
 			}else if (game.cntOwin > game.cntXwin) {
-				Toast.makeText(this, "Игрок 'O' победил в " + game.cntOwin+ "/3 матчах", 
-        				Toast.LENGTH_SHORT).show();
+				Toast t = Toast.makeText(this, "Игрок 'O' победил в " + game.cntOwin+ "/3 матчах", 
+        				Toast.LENGTH_SHORT);
+						t.setGravity(Gravity.CENTER, 0, 0);
+						t.show();
 			}else {
-				Toast.makeText(this, "Объявлена ничья!", Toast.LENGTH_SHORT).show();
+				Toast t = Toast.makeText(this, "Объявлена ничья!", 
+						Toast.LENGTH_SHORT);
+						t.setGravity(Gravity.CENTER, 0, 0);
+						t.show();
 			}
         	game.cntGames = 0;
         	game.cntXwin = 0;
