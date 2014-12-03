@@ -41,7 +41,7 @@ public class CheckWinnerVertical implements ICheckWinner {
 	public void checkDanger(Mass[][] fldp, Mass[][] fldc) {
 		Mass[][] field = game.getField();
 		Player currPlayer = null;
-		int k;
+		int k = -1;
 		for (int i = 0, len = field.length; i < len; i++) {
 			int successCounterP = 0;
 			int successCounterC = 0;

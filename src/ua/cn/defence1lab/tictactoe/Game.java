@@ -1,7 +1,5 @@
 package ua.cn.defence1lab.tictactoe;
 
-import android.widget.Button;
-
 public class Game implements ICheckWinner {
     private Player[] players;
     public Mass[][] field;

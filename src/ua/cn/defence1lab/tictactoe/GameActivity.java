@@ -101,8 +101,6 @@ public class GameActivity extends Activity {
 					}
                 }
             }
-        	//Toast.makeText(this, "1  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
-        	//if (x1 == -1 && y1 == -1) {
         		for (int i = 0, len = game.fldp.length; i < len; i++) {
                     for (int j = 0, len2 = game.fldp[i].length; j < len2; j++) {
                         Player curPl = game.fldp[i][j].getPlayer();
@@ -110,16 +108,11 @@ public class GameActivity extends Activity {
                         	if (curPl.getName() == "X") {
         						x1 = i;
         						y1 = j;
-        						//Toast.makeText(this, "XXXX  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
         					}
     					}
                     }
                 }
-			//}
-        	//Toast.makeText(this, "2  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
         	if ((x == -1 && y == -1) && (x1 == -1 && y1 == -1)) {
-        		//x=r.nextInt(3);
-            	//y=r.nextInt(3);
             	if (!game.field[1][1].isFilled()) {
             		x=1;
             		y=1;
@@ -131,7 +124,6 @@ public class GameActivity extends Activity {
 				x=x1;
 				y=y1;
 			}
-        	//Toast.makeText(this, "3  x="+x+"  y="+y, Toast.LENGTH_SHORT).show();
         	while (!game.makeTurn(x, y)) {
         		x=r.nextInt(3);
             	y=r.nextInt(3);

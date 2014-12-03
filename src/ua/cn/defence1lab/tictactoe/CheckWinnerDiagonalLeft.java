@@ -41,15 +41,15 @@ public class CheckWinnerDiagonalLeft implements ICheckWinner {
 		Player currPlayer;
 		int successCounterP = 0;
 		int successCounterC = 0;
-		int k;
-		for (int i = 0, len = field.length; i < len; i++) {
+		int k=-1;
+		for (int i = 0; i < field.length; i++) {
 			currPlayer = field[i][i].getPlayer();
-			k = -1;
+			//k = -1;
 			if (currPlayer != null) {
 				if (currPlayer.getName() == "X") {
 					successCounterP++;
 					successCounterC = -1;
-				}
+				}else
 				if (currPlayer.getName() == "O") {
 					successCounterC++;
 					successCounterP = -1;
@@ -57,13 +57,13 @@ public class CheckWinnerDiagonalLeft implements ICheckWinner {
 			} else {
 				k = i;
 			}
-			if (successCounterP == len - 1) {
+			if (successCounterP == field.length - 1) {
 				if (k != -1) {
 					fldp[k][k].fill(new Player("X"));
 					return;
 				}
-			}
-			if (successCounterC == len - 1) {
+			}else
+			if (successCounterC == field.length - 1) {
 				if (k != -1) {
 					fldc[k][k].fill(new Player("O"));
 					return;

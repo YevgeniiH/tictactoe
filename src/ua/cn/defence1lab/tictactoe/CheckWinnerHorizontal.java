@@ -34,14 +34,11 @@ public class CheckWinnerHorizontal implements ICheckWinner {
 	 * выиграть массив fldp будет иметь возможный ход противника для победы
 	 * массив fldс будет иметь возможный ход ИИ для победы (non-Javadoc)
 	 * 
-	 * @see
-	 * ua.cn.defence1lab.tictactoe.ICheckWinner#checkDanger(ua.cn.defence1lab
-	 * .tictactoe.Mass[][])
 	 */
 	public void checkDanger(Mass[][] fldp, Mass[][] fldc) {
 		Mass[][] field = game.getField();
 		Player currPlayer = null;
-		int k;
+		int k = -1;
 		for (int i = 0, len = field.length; i < len; i++) {
 			int successCounterP = 0;
 			int successCounterC = 0;
